@@ -1,0 +1,7 @@
+<div class="col-md-12">
+  <% comments.each do |c| %>
+    <p>Comment from <%= c.system_ip%> at <%= c.comment_date_time %></p>
+    <p><%= c.description.html_safe %></p>
+    <hr>
+  <% end %>
+</div>
