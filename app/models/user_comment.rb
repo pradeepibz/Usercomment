@@ -9,7 +9,7 @@ class UserComment < ApplicationRecord
   end
 
   def check_time_interval
-    comments = UserComment.where("user_comments.created_at > ? AND user_comments.created_at < ?", created_at - 5.minutes, created_at)
+    comments = UserComment.where("user_comments.created_at > ? AND user_comments.created_at < ? AND system_ip = ?", created_at - 5.minutes, created_at, system_ip)
     comments.update_all(is_active: false) if comments.present?
   end
 end
